@@ -13,7 +13,7 @@ module Sprockets::Vue
           style = STYLE_REGEX.match(data)
           if style
             input[:data] = style[:content]
-            STYLE_COMPILES[style[:lang]].call(input)
+            (STYLE_COMPILES[style[:lang]] || STYLE_COMPILES[nil]).call(input)
           else
             ''
           end
