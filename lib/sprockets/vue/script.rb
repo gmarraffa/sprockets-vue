@@ -25,7 +25,7 @@ module Sprockets::Vue
           output = []
           map = nil
           if script
-            result = SCRIPT_COMPILES[script[:lang]].call(script[:content], input)
+            result = (SCRIPT_COMPILES[script[:lang]] || SCRIPT_COMPILES[nil]).call(script[:content], input)
             
             map = result['sourceMap']
 
